@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
       case "DELETE /items/{id}":
         await dynamo
           .delete({
-            TableName: "crud-challenge",
+            TableName: "crud-lab",
             Key: {
               id: event.pathParameters.id,
             },
@@ -29,7 +29,7 @@ exports.handler = async (event, context) => {
       case "GET /items/{id}":
         body = await dynamo
           .get({
-            TableName: "crud-challenge",
+            TableName: "crud-lab",
             Key: {
               id: event.pathParameters.id,
             },
@@ -39,7 +39,7 @@ exports.handler = async (event, context) => {
 
       //Exibir lista de itens da tabela
       case "GET /items":
-        body = await dynamo.scan({ TableName: "crud-challenge" }).promise();
+        body = await dynamo.scan({ TableName: "crud-lab" }).promise();
         break;
 
       //Adicionar ou atualizar item da tabela
@@ -47,7 +47,7 @@ exports.handler = async (event, context) => {
         let requestJSON = JSON.parse(event.body);
         await dynamo
           .put({
-            TableName: "crud-challenge",
+            TableName: "crud-lab",
             Item: {
               id: requestJSON.id,
               price: requestJSON.price,
