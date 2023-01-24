@@ -50,8 +50,8 @@ exports.handler = async (event, context) => {
             TableName: "crud-lab",
             Item: {
               id: requestJSON.id,
-              price: requestJSON.price,
-              name: requestJSON.name,
+              preco: requestJSON.preco,
+              prod: requestJSON.prod,
             },
           })
           .promise();
