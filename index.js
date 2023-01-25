@@ -1,4 +1,5 @@
 const AWS = require("aws-sdk");
+
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
 exports.handler = async (event, context) => {
@@ -9,10 +10,7 @@ exports.handler = async (event, context) => {
   };
 
   try {
-    console.info("event data: " + JSON.stringify(event));
-
-    switch (event.httpMethod + " " + event.resource) {
-      //Deletar item único pelo ID
+    switch (event.routeKey) {
       case "DELETE /items/{id}":
         await dynamo
           .delete({
@@ -22,10 +20,8 @@ exports.handler = async (event, context) => {
             },
           })
           .promise();
-        body = `Deleted item ${event.pathParameters.id}`;
+        body = `Item deletado: ${event.pathParameters.id}`;
         break;
-
-      //Exibir item único pelo ID
       case "GET /items/{id}":
         body = await dynamo
           .get({
@@ -36,13 +32,9 @@ exports.handler = async (event, context) => {
           })
           .promise();
         break;
-
-      //Exibir lista de itens da tabela
       case "GET /items":
         body = await dynamo.scan({ TableName: "crud-lab" }).promise();
         break;
-
-      //Adicionar ou atualizar item da tabela
       case "PUT /items":
         let requestJSON = JSON.parse(event.body);
         await dynamo
@@ -50,25 +42,15 @@ exports.handler = async (event, context) => {
             TableName: "crud-lab",
             Item: {
               id: requestJSON.id,
-              preco: requestJSON.preco,
-              prod: requestJSON.prod,
+              price: requestJSON.price,
+              name: requestJSON.name,
             },
           })
           .promise();
-        body = `Put item ${requestJSON.id}`;
+        body = `Item adicionado: ${requestJSON.id}`;
         break;
-
-      //Se a rota não for encontrada
       default:
-        throw new Error(
-          `Unsupported route: "${
-            event.httpMethod +
-            " " +
-            event.resource +
-            " - EVENT: " +
-            JSON.stringify(event)
-          }"`
-        );
+        throw new Error(`Unsupported route: "${event.routeKey}"`);
     }
   } catch (err) {
     statusCode = 400;
