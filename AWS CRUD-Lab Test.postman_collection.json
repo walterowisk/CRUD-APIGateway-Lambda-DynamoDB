@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "64639c09-d706-4e51-93c5-a2ad198dc7d3",
+		"name": "AWS CRUD-Lab Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25181280"
+	},
+	"item": [
+		{
+			"name": "Put items",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": \"102030\", \"price\": 13, \"name\": \"tenis nike\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items",
+					"protocol": "https",
+					"host": [
+						"491xm45qxb",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items",
+					"protocol": "https",
+					"host": [
+						"491xm45qxb",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get items by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items/102030",
+					"protocol": "https",
+					"host": [
+						"491xm45qxb",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"items",
+						"102030"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete items by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items/102030",
+					"protocol": "https",
+					"host": [
+						"491xm45qxb",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"items",
+						"102030"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
