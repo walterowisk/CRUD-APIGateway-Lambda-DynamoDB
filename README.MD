@@ -18,7 +18,7 @@
 </div> 
 
 ## :chart_with_upwards_trend: Diagrama do projeto
-<div align="center"> <img src="https://github.com/walterowisk/CRUD-APIGateway-Lambda-DynamoDB/blob/main/img/aws-diagram.png" alt="AWS Diagram" width="300"> </div> 
+<div align="center"> <img src="https://github.com/walterowisk/CRUD-APIGateway-Lambda-DynamoDB/blob/main/img/aws-diagram.png" alt="AWS Diagram" width="600"> </div> 
 
 ## :cloud: Serviços AWS
 
@@ -35,7 +35,7 @@ Basicamente o fluxo do projeto consiste na criação de uma tabela no DynamoDB. 
 
 É interessante ressaltar que a API é executada de forma serverless, portanto, não há gerenciamento da infraestrutura e o sistema escala automaticamente.
 
-## Mão no console
+## :computer: Mão no console
 Todas as etapas deste projeto foram feitas diretamente no AWS Management Console. 
 
 > Todos os nomes `marcados como código` foram dados por mim e, portanto, ficam a critério de quem estiver reproduzindo o projeto.
@@ -157,5 +157,5 @@ Retorno:
 Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items/123
 Retorno: `"Item deletado: 123"`
 
-### Gif preview
- <div align="center"> <img src="https://github.com/walterowisk/CRUD-APIGateway-Lambda-DynamoDB/blob/main/img/crud-api-postman.gif" alt="Gif Test API Postman" width="300"> </div> 
+### :eyes: Gif preview
+ <div align="center"> <img src="https://github.com/walterowisk/CRUD-APIGateway-Lambda-DynamoDB/blob/main/img/crud-api-postman.gif" alt="Gif Test API Postman" width="620"> </div> 
