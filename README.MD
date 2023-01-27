@@ -94,6 +94,7 @@ Para criar as rotas basta executar os passos a seguir:
  - Repetir o mesmo procedimento para a rota `GET /items`.
  - Fazer o mesmo procedimento para `GET /items/{id}`. Atentar para o caminho com o parâmetro `/{id}` no final.
  - A última rota é a `DELETE /items/{id}`.
+ 
  Assim ficarão as rotas:
  <div align="center"> <img src="https://github.com/walterowisk/CRUD-APIGateway-Lambda-DynamoDB/blob/main/img/routes.png" alt="API Routes" width="300"> </div> 
 
@@ -121,12 +122,17 @@ Após realizar todas as integrações as rotas ficarão de acordo com a imagem a
 Conforme já mencionado os testes foram feitos com o Postman, um API Client muito popular entre os desenvolvedores.
 Os testes foram feitos na seguinte sequência:
  - **Criar ou atualizar um item (`PUT /items`):**
+ 
 	 Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items
+	 
 	 Corpo: `{"id": "123", "price": 178, "name": "tenis nike"}`
+	 
 	 Retorno: `"Item adicionado: 123"`
  
  - **Solicitar todos os itens (`GET /items`):**
+ 
 	  Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items
+	  
 	  Retorno:
   ```json
 {
@@ -142,7 +148,9 @@ Os testes foram feitos na seguinte sequência:
 }
 ```
  - **Solicitar um item específico (`GET /items/{id}`):**
+ 
 	Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items/123
+	
 	Retorno:
 ```json
 {
@@ -154,10 +162,14 @@ Os testes foram feitos na seguinte sequência:
 }
 ```
  - **Excluir um item específico (`DELETE /items/{id}`):**
+ 
 	Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items/123
+	
 	Retorno: `"Item deletado: 123"`
 
 ### :eyes: Gif preview
  <div align="center"> <img src="https://github.com/walterowisk/CRUD-APIGateway-Lambda-DynamoDB/blob/main/img/crud-api-postman.gif" alt="Gif Test API Postman" width="620"> </div> 
+
+---
 
 > :bulb: Importante: Não esquecer de excluir os recursos criados para evitar cobranças desnecessárias da AWS.
