@@ -49,7 +49,7 @@ Tabela para armazenar os dados enviados pelo Postman. Partition key recomendada 
  - Clicar em ***Create Table***.
  - Em ***Table name*** inserir `crud-lab`.
  - Em ***Partition key*** inserir `id` .
- - Rolar a página até o fonal e clicar em ***Create table***.
+ - Rolar a página até o final e clicar em ***Create table***.
 
 ### 2. Criação de uma função Lambda
 A documentação da AWS recomenda  a criação de funções separadas para cada rota, mas neste projeto será utilizada uma única função Lambda.
@@ -79,7 +79,7 @@ Será criada inicialmente uma API vazia para depois configurar as rotas e integr
  - Na tela ***Review and create*** clicar em ***Create***.
 
 ### 4. Criação das rotas
-Serão criadas quatro rotas para envio de solicitações de API para o backend da aplicação, papel desempenhado pela função Lambda. Está anexado a este repositório o arquivo `.json` da collection exportada do Postman para enventuais consultas.
+Serão criadas quatro rotas para envio de solicitações de API para o backend da aplicação, papel desempenhado pela função Lambda. Está anexado a este repositório o arquivo `.json` da collection exportada do Postman para eventuais consultas.
 As rotas são as seguintes:
 -   `PUT /items`
 -   `GET /items`
@@ -92,18 +92,18 @@ Para criar as rotas basta executar os passos a seguir:
  -  Na barra lateral direita da tela clicar em ***Routes*** e na tela seguinte clicar em ***Create*** .
  - Ao entrar na tela ***Create a route*** na função ***Route and method*** selecionar o método `PUT` e logo ao lado do método inserir o caminho `/items`  e em seguida clicar em ***Create***.
  - Repetir o mesmo procedimento para a rota `GET /items`.
- - A rota seguinte é a `GET /items/{id}`. Atentar para o caminho com o parâmetro `/{id}` no final.
- - A última rota é a `DELETE /items/{id}`
- 
+ - Fazer o mesmo procedimento para `GET /items/{id}`. Atentar para o caminho com o parâmetro `/{id}` no final.
+ - A última rota é a `DELETE /items/{id}`.
+ Assim ficarão as rotas:
  <div align="center"> <img src="https://github.com/walterowisk/CRUD-APIGateway-Lambda-DynamoDB/blob/main/img/routes.png" alt="API Routes" width="300"> </div> 
 
 ### 5. Criar a integração
 Conectar as rotas criadas com o Lambda.
 
  - Dentro do console da API criada clicar em ***Integrations*** na barra lateral direita.
- - Em seguida clicar na na aba ***Manage integrations*** e depois em ***Create***.
+ - Em seguida clicar na aba ***Manage integrations*** e depois em ***Create***.
  - Na tela ***Create an integration*** ir direto para a opção ***Integration target/Integration type*** selecionar a opção *Lambda function* 
-- Mais abaixo, em ***Lambda Function*** selecionar `crud-lab-lambda`e a seguir clicar em ***Create***.
+- Mais abaixo, em ***Lambda Function***, selecionar `crud-lab-lambda`e a seguir clicar em ***Create***.
 
 ### 6. Anexar a integração com as rotas
 Será utilizada a mesma integração para todas as rotas.
@@ -113,21 +113,21 @@ Será utilizada a mesma integração para todas as rotas.
  - Selecionar a opção `crud-lab-lambda` e clicar em ***Attach integration***.
  - Repetir essa integração para todas as rotas.
 
-Após realizar todas as integrações as rotas ficarão de acordo com a imagem. Com esse passo conluído já é possível realizar os testes de API.
+Após realizar todas as integrações as rotas ficarão de acordo com a imagem abaixo. Com esse passo conluído já é possível realizar os testes de API.
 
 <div align="center"> <img src="https://github.com/walterowisk/CRUD-APIGateway-Lambda-DynamoDB/blob/main/img/integrations.png" alt="Integrations" width="300"> </div> 
 
 ### 7. Testar a API
 Conforme já mencionado os testes foram feitos com o Postman, um API Client muito popular entre os desenvolvedores.
-
+Os testes foram feitos na seguinte sequência:
  - **Criar ou atualizar um item (`PUT /items`):**
- Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items
- Corpo: `{"id": "123", "price": 178, "name": "tenis nike"}`
- Retorno: `"Item adicionado: 123"`
+	 Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items
+	 Corpo: `{"id": "123", "price": 178, "name": "tenis nike"}`
+	 Retorno: `"Item adicionado: 123"`
  
  - **Solicitar todos os itens (`GET /items`):**
-  Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items
-  Retorno:
+	  Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items
+	  Retorno:
   ```json
 {
     "Items": [
@@ -142,8 +142,8 @@ Conforme já mencionado os testes foram feitos com o Postman, um API Client muit
 }
 ```
  - **Solicitar um item específico (`GET /items/{id}`):**
-Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items/123
-Retorno:
+	Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items/123
+	Retorno:
 ```json
 {
     "Item": {
@@ -154,8 +154,10 @@ Retorno:
 }
 ```
  - **Excluir um item específico (`DELETE /items/{id}`):**
-Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items/123
-Retorno: `"Item deletado: 123"`
+	Endpoint: https://491xm45qxb.execute-api.us-east-1.amazonaws.com/items/123
+	Retorno: `"Item deletado: 123"`
 
 ### :eyes: Gif preview
  <div align="center"> <img src="https://github.com/walterowisk/CRUD-APIGateway-Lambda-DynamoDB/blob/main/img/crud-api-postman.gif" alt="Gif Test API Postman" width="620"> </div> 
+
+> :bulb: Importante: Não esquecer de excluir os recursos criados para evitar cobranças desnecessárias da AWS.
